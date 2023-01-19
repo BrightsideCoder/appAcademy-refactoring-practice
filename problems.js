@@ -49,7 +49,11 @@ function returnSevens(max)
     the sentence, and `false` if neither or only 1 is found.
 */
 function bothStringsIncluded(sentence, word1, word2) {
-    return sentence.includes(word1) || sentence.includes(word2);
+    if (sentence.includes(word1) && sentence.includes(word2))
+    {
+        return true;
+    }
+    return false;;
 }
 
 /*
@@ -63,11 +67,11 @@ function bothStringsIncluded(sentence, word1, word2) {
     you get when you multiply all the numbers together.
 */
 function productArray(arr) {
-    let sum = 0;
+    let product = 1;
     for (let i = 0; i < arr.length; i++) {
-        sum += arr[i];
+        product *= arr[i];
     }
-    return sum;
+    return product;
 }
 
 /*
@@ -80,7 +84,11 @@ function productArray(arr) {
     if the number is divisible by BOTH 5 and 11 and `false` otherwise.
 */
 function fiveAndEleven(num) {
-    return num % 3 === 0 || num % 7 === 0;
+    if (num % 5 === 0 && num % 11 === 0)
+    {
+        return true;
+    }
+    return false;
 }
 
 /*
@@ -93,13 +101,15 @@ function fiveAndEleven(num) {
     returns the number of consonants in the word.
 */
 function countConsonants(word) {
-    const vowels = ["a", "e", "i", "o", "u"];
+    const vowels = ["a", "e", "i", "o", "u", " "];
     let count = 0;
     for (let i = 0; i < word.length; i++) {
-        if (vowels.includes(word[i])) {
+        if (!vowels.includes(word[i]))
+        {
             count++;
         }
     }
+
     return count;
 }
 
@@ -120,7 +130,14 @@ function countConsonants(word) {
     The `.join('')` function joins the elements in an array into a string.
 */
 function alternatingLetters(str) {
-    return str.toLowerCase();
+    let char = str.split("");
+
+    for (let i = 1; i < char.length; i += 2)
+    {
+       char[i] = char[i].toUpperCase();
+    }
+  return char.join("");
+
 }
 
 module.exports = {
